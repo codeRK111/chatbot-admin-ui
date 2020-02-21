@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        />
+
+        <style>
+            html,
+            body {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            .w-15 {
+                min-width: 18%;
+            }
+
+            .text-gray {
+                color: #999999;
+                font-weight: 500;
+            }
+            .bold{
+                  font-weight: 500;
+            }
+           
+            .bg-moon-gray {
+                background-color: #eeeeee;
+            }
+            .color-gray {
+                color: #eeeeee;
+            }
+
+            .padding {
+                padding: 0.1rem 0;
+            }
+
+            .sm-padding{
+                   padding: 0.3rem
+            }
+
+            .header-icon {
+                font-size: 3rem;
+                color: #007bff;
+            }
+            .medium-icon {
+                font-size: 3rem;
+            }
+            .large-icon {
+                font-size: 4rem;
+            }
+
+            .large-text {
+                font-size: 3rem;
+            }
+
+            .small-text {
+                font-size: 0.8rem;
+            }
+
+            .count {
+                font-weight: 600;
+                color: #000;
+                font-size: 2rem;
+            }
+
+            .color-green {
+                color: #19a974;
+            }
+
+            .percent-value {
+                font-size: 2.2rem;
+            }
+            .medium-text {
+                font-size: 1.3rem;
+            }
+            .medium-text-2 {
+                font-size: 2.3rem;
+            }
+            .medium-text-3 {
+                font-size: 1.5rem;
+            }
+            .medium-bold {
+                font-weight: 500;
+            }
+            .top-30 {
+                margin-top: 30px;
+            }
+
+            .green-gradient {
+                background: #11998e; /* fallback for old browsers */
+                background: -webkit-linear-gradient(
+                    to right,
+                    #38ef7d,
+                    #11998e
+                ); /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(
+                    to right,
+                    #38ef7d,
+                    #11998e
+                ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            }
+            .red-gradient {
+                background: #333333; /* fallback for old browsers */
+                background: -webkit-linear-gradient(
+                    to right,
+                    #dd1818,
+                    #333333
+                ); /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(
+                    to right,
+                    #dd1818,
+                    #333333
+                ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            }
+
+            .orange-gradient {
+                background: #ffb75e; /* fallback for old browsers */
+                background: -webkit-linear-gradient(
+                    to right,
+                    #ed8f03,
+                    #ffb75e
+                ); /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(
+                    to right,
+                    #ed8f03,
+                    #ffb75e
+                ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            }
+            .blue-gradient {
+                background: #373b44; /* fallback for old browsers */
+                background: -webkit-linear-gradient(
+                    to right,
+                    #4286f4,
+                    #373b44
+                ); /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(
+                    to right,
+                    #4286f4,
+                    #373b44
+                ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            }
+
+            .session-box {
+                  border: 1px solid #9EEBCF;
+            }
+        </style>
+        <script
+            type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"
+        ></script>
+        <script type="text/javascript">
+            google.charts.load("current", { packages: ["line"] });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn("number", "Day");
+                data.addColumn("number", "Guardians of the Galaxy");
+                data.addColumn("number", "The Avengers");
+                data.addColumn("number", "Transformers: Age of Extinction");
+
+                data.addRows([
+                    [1, 37.8, 80.8, 41.8],
+                    [2, 30.9, 69.5, 32.4],
+                    [3, 25.4, 57, 25.7],
+                    [4, 11.7, 18.8, 10.5],
+                    [5, 11.9, 17.6, 10.4],
+                    [6, 8.8, 13.6, 7.7],
+                    [7, 7.6, 12.3, 9.6],
+                    [8, 12.3, 29.2, 10.6],
+                    [9, 16.9, 42.9, 14.8],
+                    [10, 12.8, 30.9, 11.6],
+                    [11, 5.3, 7.9, 4.7],
+                    [12, 6.6, 8.4, 5.2],
+                    [13, 4.8, 6.3, 3.6],
+                    [14, 4.2, 6.2, 3.4]
+                ]);
+
+                var options = {
+                    legend: { position: "none" },
+                    width: "100%",
+                    height: 300,
+                    chartArea: {
+                        width: "100%",
+                        height: "100%",
+                        backgroundColor: {
+                            fill: "#000000",
+                            fillOpacity: 0.1
+                        }
+                    },
+                    // Colors the entire chart area, simple version
+                    // backgroundColor: '#000000',
+                    // Colors the entire chart area, with opacity
+                    backgroundColor: {
+                        fill: "#000000",
+                        fillOpacity: 0.8
+                    }
+                };
+
+                var chart = new google.charts.Line(
+                    document.getElementById("chart_div")
+                );
+
+                chart.draw(data, google.charts.Line.convertOptions(options));
+            }
+        </script>
+    </head>
+    <body>
+        <div class="d-flex w-100">
+            <div style="width: 350px;"></div>
+            <div class="container-fluid">
+                <!-- Header Starts -->
+                <div class="row mt-3">
+                    <div class="col-12 col-md-9 ">
+                        <div class="d-flex justify-content-between">
+                            <div
+                                class="d-flex w-15  pr-3 pl-3 align-items-center"
+                            >
+                                <div class="mr-3">
+                                    <i class="fas fa-envelope header-icon"></i>
+                                </div>
+                                <div
+                                    class="d-flex flex-column align-items-start"
+                                >
+                                    <div class="text-gray padding">
+                                        TOTAL MESSAGES
+                                    </div>
+                                    <div class="padding count">12876</div>
+                                    <div class="padding color-green">
+                                        <span>112%</span>
+                                        <i class="fas fa-caret-up "></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="d-flex w-15  pr-3 pl-3 align-items-center"
+                            >
+                                <div class="mr-3">
+                                    <i
+                                        class="fas fa-envelope-open-text header-icon"
+                                    ></i>
+                                </div>
+                                <div
+                                    class="d-flex flex-column align-items-start"
+                                >
+                                    <div class="text-gray padding">
+                                        TOTAL SENT MESSAGES
+                                    </div>
+                                    <div class="padding count">12850</div>
+                                    <div class="padding color-green">
+                                        <span>109%</span>
+                                        <i class="fas fa-caret-up "></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-primary w-15 rounded pr-3">
+                                <div class="text-center text-light">TOTAL</div>
+                                <div class="text-center text-light">
+                                    BOT RESPONSE
+                                </div>
+                                <div class="text-center text-light">
+                                    <span class="percent-value">98</span>
+                                    <span class="percent-symbol">%</span>
+                                </div>
+                            </div>
+                            <div
+                                class="d-flex w-15  pr-3 pl-3 align-items-center"
+                            >
+                                <div class="mr-3">
+                                    <i class="fas fa-comments header-icon"></i>
+                                </div>
+                                <div
+                                    class="d-flex flex-column align-items-start"
+                                >
+                                    <div class="text-gray padding">
+                                        TOTAL CONVERSATIONS
+                                    </div>
+                                    <div class="padding count">678</div>
+                                    <div class="padding color-green">
+                                        <span>112%</span>
+                                        <i class="fas fa-caret-up "></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="d-flex w-15  pr-3 pl-3 align-items-center"
+                            >
+                                <div class="mr-3">
+                                    <i class="far fa-clock header-icon"></i>
+                                </div>
+                                <div
+                                    class="d-flex flex-column align-items-start"
+                                >
+                                    <div class="text-gray padding">
+                                        TOTAL DURATIONS
+                                    </div>
+                                    <div class="padding count">230Hr</div>
+                                    <div class="padding color-green">
+                                        <span>112%</span>
+                                        <i class="fas fa-caret-up "></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <div class="bg-moon-gray rounded ">
+                            <div class="d-flex w-100 p-3 align-items-center">
+                                <div class="icon-container mr-3">
+                                    <i
+                                        class="fas fa-mail-bulk color-green large-icon"
+                                    ></i>
+                                </div>
+                                <div class="details-container">
+                                    <div class="color-green count">
+                                        CHAT TRANSFER
+                                    </div>
+                                    <div>
+                                        <span class="count">238</span>
+                                        <span class="medium-text medium-bold"
+                                            >/678</span
+                                        >
+                                        <span>conv.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Header Ends -->
+                <!-- User info starts -->
+                <div class="row mt-5">
+                    <div class="col-12 col-sm-12 col-md-5 col-lg-5">
+                        <div class="row">
+                            <div
+                                class="col-3 col-sm-3 col-md-6 col-lg-6 top-30"
+                            >
+                                <div class="h-100 bg-primary green-gradient">
+                                    <div class="pt-3  pl-3">
+                                        <div>
+                                            <i
+                                                class="fas fa-users medium-icon color-gray"
+                                            ></i>
+                                        </div>
+                                        <div class="text-light small-text">
+                                            TOTAL USERS
+                                        </div>
+                                    </div>
+                                    <div class="pb-3 pl-3">
+                                        <div>
+                                            <span class="large-text text-light"
+                                                >123</span
+                                            >
+                                            <span class="text-light"
+                                                >+6.9%</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-3 col-sm-3 col-md-6 col-lg-6 top-30"
+                            >
+                                <div class="h-100 bg-primary red-gradient">
+                                    <div class="pt-3  pl-3">
+                                        <div>
+                                            <i
+                                                class="fas fa-user-friends medium-icon color-gray ml-3"
+                                            ></i>
+                                        </div>
+                                        <div class="text-light small-text">
+                                            RETURNED USERS
+                                        </div>
+                                    </div>
+                                    <div class="pb-3 pl-3">
+                                        <div>
+                                            <span class="large-text text-light"
+                                                >08</span
+                                            >
+                                            <span class="text-light"
+                                                >+6.9%</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-3 col-sm-3 col-md-6 col-lg-6 top-30"
+                            >
+                                <div class="h-100 bg-primary orange-gradient">
+                                    <div class="pt-3  pl-3">
+                                        <div>
+                                            <i
+                                                class="fas fa-comments medium-icon color-gray"
+                                            ></i>
+                                        </div>
+                                        <div class="text-light small-text">
+                                            AVG. CONVERSATION <br />
+                                            STEP FOR USERS
+                                        </div>
+                                    </div>
+                                    <div class="pb-3 pl-3">
+                                        <div>
+                                            <span class="large-text text-light"
+                                                >1.6</span
+                                            >
+                                            <span class="text-light"
+                                                >+6.9%</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="col-3 col-sm-3 col-md-6 col-lg-6 top-30"
+                            >
+                                <div class="h-100 bg-primary blue-gradient">
+                                    <div class="pt-3  pl-3">
+                                        <div>
+                                            <i
+                                                class="fas fa-clock medium-icon color-gray"
+                                            ></i>
+                                        </div>
+                                        <div class="text-light small-text">
+                                            AVG. SESSION <br />DURATION FOR
+                                            USERS
+                                        </div>
+                                    </div>
+                                    <div class="pb-3 pl-3">
+                                        <div>
+                                            <span class="large-text text-light"
+                                                >32s</span
+                                            >
+                                            <span class="text-light"
+                                                >+6.9%</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+                        <div class="top-30 w-100 h-100">
+                            <!-- <div class="bg-dark">test</div> -->
+                            <div id="chart_div"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- User info ends -->
+                <!-- Queries starts -->
+                <div class="row mt-5">
+                    <div class="col-sm-12 col-md-8">
+                        <div class="text-gray padding mb-3">
+                            Sessions
+                        </div>
+                        <div class="row">
+                              <div class="col-3">
+                                    <div class="session-box sm-padding">
+                                          <div class="text-gray small-text">
+                                                DAILY SESSIONS
+                                            </div>  
+                                            <div>
+                                                <span class="medium-text-2 bold"
+                                                    >41</span
+                                                >
+                                                <span class="small-text"
+                                                    >-29%</span
+                                                >
+                                            </div>
+                                    </div>
+                              </div>
+                              <div class="col-3">
+                                    <div class="session-box sm-padding">
+                                          <div class="text-gray small-text">
+                                                DAILY SESSION PER USER
+                                            </div>  
+                                            <div>
+                                                <span class="medium-text-2 bold"
+                                                    >1.6</span
+                                                >
+                                                <span class="small-text"
+                                                    >-21%</span
+                                                >
+                                            </div>
+                                    </div>
+                              </div>
+                              <div class="col-3">
+                                    <div class="session-box sm-padding">
+                                          <div class="text-gray small-text">
+                                                DAILY MESSAGE PER SESSION
+                                            </div>  
+                                            <div>
+                                                <span class="medium-text-2 bold"
+                                                    >3.9</span
+                                                >
+                                                <span class="small-text"
+                                                    >-21%</span
+                                                >
+                                            </div>
+                                    </div>
+                              </div>
+                              <div class="col-3">
+                                    <div class="session-box sm-padding">
+                                          <div class="text-gray small-text">
+                                                DAILY CONV. PER SESSION
+                                            </div>  
+                                            <div>
+                                                <span class="medium-text-2 bold"
+                                                    >4.9</span
+                                                >
+                                                <span class="small-text"
+                                                    >-21%</span
+                                                >
+                                            </div>
+                                    </div>
+                              </div>
+                              
+                        </div>
+                        <div class="text-gray padding mb-3 mt-3">
+                            Scenarios
+                        </div>
+                        <div class="row">
+                              <div class="col-4">
+                                    <div class="session-box p-3 d-flex justify-content-between align-items-center">
+                                         
+                                          <div>
+                                                <div class="text-gray small-text">
+                                                      TOTAL SCENARIOS
+                                                  </div>  
+                                                  <div>
+                                                      <span class="medium-text-2 bold"
+                                                          >2384</span
+                                                      >
+                                                      <span class="small-text"
+                                                          >-29%</span
+                                                      >
+                                                  </div>
+                                          </div>
+                                          <div class="sm-padding">
+                                                <i class="far fa-comment-alt color-green medium-text-2"></i>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="col-4">
+                                    <div class="session-box p-3 d-flex justify-content-between align-items-center">
+                                         
+                                          <div>
+                                                <div class="text-gray small-text">
+                                                      TOTAL SCENARIOS QUESTIONS
+                                                  </div>  
+                                                  <div>
+                                                      <span class="medium-text-2 bold"
+                                                          >8193</span
+                                                      >
+                                                      <span class="small-text"
+                                                          >-29%</span
+                                                      >
+                                                  </div>
+                                          </div>
+                                          <div class="sm-padding">
+                                                <i class="far fa-question-circle color-green medium-text-2"></i>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="col-4">
+                                    <div class="session-box p-3 d-flex justify-content-between align-items-center">
+                                         
+                                          <div>
+                                                <div class="text-gray small-text">
+                                                     TOTAL ENTITIES
+                                                  </div>  
+                                                  <div>
+                                                      <span class="medium-text-2 bold"
+                                                          >3534</span
+                                                      >
+                                                      <span class="small-text"
+                                                          >-29%</span
+                                                      >
+                                                  </div>
+                                          </div>
+                                          <div class="sm-padding">
+                                                <i class="fas fa-network-wired  color-green medium-text-2"></i>
+                                          </div>
+                                    </div>
+                              </div>
+                              
+                             
+                             
+                              
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                        <div class="d-flex w-100 justify-content-between align-items-center">
+                              <div class="medium-text-2 text-gray bold mb-3">
+                                    Top Queries
+                              </div>
+                              <div class=" color-green">
+                                    View Details
+                              </div>
+                        </div>
+                        <div class="mb-3">
+                              <div class="d-flex w-100 justify-content-between align-items-center">
+                                    <div class="medium-text-3 text-gray bold">
+                                          I am interested in buying f3
+                                    </div>
+                                    <div class="medium-text-3 ">
+                                          88%
+                                    </div>
+                              </div>
+                              <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                        </div>
+                        <div class="mb-3">
+                              <div class="d-flex w-100 justify-content-between align-items-center">
+                                    <div class="medium-text-3 text-gray bold">
+                                          Where to buy f7
+                                    </div>
+                                    <div class="medium-text-3 ">
+                                          68%
+                                    </div>
+                              </div>
+                              <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                        </div>
+                        <div class="mb-3">
+                              <div class="d-flex w-100 justify-content-between align-items-center">
+                                    <div class="medium-text-3 text-gray bold">
+                                         My phone is dead
+                                    </div>
+                                    <div class="medium-text-3 ">
+                                          37%
+                                    </div>
+                              </div>
+                              <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 37%" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Queries ends -->
+            </div>
+        </div>
+
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
