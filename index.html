@@ -31,10 +31,10 @@
                 color: #999999;
                 font-weight: 500;
             }
-            .bold{
-                  font-weight: 500;
+            .bold {
+                font-weight: 500;
             }
-           
+
             .bg-moon-gray {
                 background-color: #eeeeee;
             }
@@ -46,8 +46,8 @@
                 padding: 0.1rem 0;
             }
 
-            .sm-padding{
-                   padding: 0.3rem
+            .sm-padding {
+                padding: 0.3rem;
             }
 
             .header-icon {
@@ -153,13 +153,99 @@
             }
 
             .session-box {
-                  border: 1px solid #9EEBCF;
+                border: 1px solid #9eebcf;
             }
+            .gray-box {
+                border: 1px solid #999999;
+            }
+            .yellow-dot {
+                height: 13px;
+                width: 13px;
+                border-radius: 50%;
+                background-color: #ed8f03;
+                margin-right: 10px;
+            }
+            .pink-dot {
+                height: 13px;
+                width: 13px;
+                border-radius: 50%;
+                background-color: #ff80cc;
+                margin-right: 10px;
+            }
+
+            .green-rectangle {
+                width: 16px;
+                height: 16px;
+                background-color: #19a974;
+                margin-right: 10px;
+            }
+            .red-rectangle {
+                width: 16px;
+                height: 16px;
+                background-color: #ff4136;
+                margin-right: 10px;
+            }
+
+            .mt-100 {
+                margin-top: 100px;
+            }
+
+            .shadow {
+                box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2);
+            }
+
+            .br-pill {
+                border-radius: 9999px;
+            }
+
+            .bg-black {
+                background-color: #000;
+                opacity: 0.8;
+                color: #eeeeee;
+            }
+            .bg-dark-gray {
+                background-color: #555555;
+                color: #eeeeee;
+            }
+            .color-dark-gray {
+                color: #555555;
+            }
+            .color-pink {
+                color: #d5008f;
+            }
+            .color-yellow {
+                color: #ffd700;
+            }
+            .flex-1 {
+                flex: 1;
+            }
+            .border-bottom-2 {
+                border-bottom: 2px solid #555555;
+            }
+            .border-bottom-white {
+                border-bottom: 2px solid #fff;
+            }
+
+            /* text {
+                  display: none !important;
+            } */
         </style>
         <script
             type="text/javascript"
             src="https://www.gstatic.com/charts/loader.js"
         ></script>
+
+        <!-- Step 1 - Include the fusioncharts core library -->
+        <script
+            type="text/javascript"
+            src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"
+        ></script>
+        <!-- Step 2 - Include the fusion theme -->
+        <script
+            type="text/javascript"
+            src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"
+        ></script>
+
         <script type="text/javascript">
             google.charts.load("current", { packages: ["line"] });
             google.charts.setOnLoadCallback(drawChart);
@@ -191,7 +277,7 @@
                 var options = {
                     legend: { position: "none" },
                     width: "100%",
-                    height: 300,
+                    height: 200,
                     chartArea: {
                         width: "100%",
                         height: "100%",
@@ -216,11 +302,134 @@
                 chart.draw(data, google.charts.Line.convertOptions(options));
             }
         </script>
+        <script>
+            const dataSource = {
+                chart: {
+                    caption: "",
+                    captionontop: "0",
+                    origw: "580",
+                    origh: "350",
+                    gaugestartangle: "180",
+                    gaugeendangle: "0",
+                    gaugeoriginx: "500",
+                    gaugeoriginy: "300",
+                    gaugeouterradius: "290",
+                    theme: "fusion",
+                    showvalue: "0",
+                    numbersuffix: "",
+                    valuefontsize: "0"
+                },
+                colorrange: {
+                    color: [
+                        {
+                            minvalue: "0",
+                            maxvalue: "95",
+                            code: "#FBF1A9"
+                        },
+                        {
+                            minvalue: "95",
+                            maxvalue: "100",
+                            code: "#FF80CC"
+                        }
+                    ]
+                },
+                dials: {
+                    dial: [
+                        {
+                            value: "80",
+                            tooltext: "Moderate Pressure"
+                        }
+                    ]
+                }
+            };
+
+            FusionCharts.ready(function() {
+                var myChart = new FusionCharts({
+                    type: "angulargauge",
+                    renderAt: "chart-container",
+                    width: "100%",
+                    height: "100%",
+                    dataFormat: "json",
+                    dataSource
+                }).render();
+            });
+        </script>
+        <script type="text/javascript">
+            google.charts.load("current", { packages: ["bar"] });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ["", "Density", { role: "style" }],
+                    ["70-100%", 80, "#b87333"], // RGB value
+                    ["40-70%", 15, "silver"], // English color name
+                    ["0-40%", 5, "gold"]
+                ]);
+
+                var options = {
+                    legend: { position: "none" },
+                    height: 300,
+                    bar: { groupWidth: "50%" }
+                };
+
+                var chart = new google.charts.Bar(
+                    document.getElementById("columnchart_material")
+                );
+
+                chart.draw(data, google.charts.Bar.convertOptions(options));
+            }
+        </script>
+        <script>
+            google.charts.load("current", { packages: ["line"] });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn("number", "");
+                data.addColumn("number", "Guardians of the Galaxy");
+                data.addColumn("number", "The Avengers");
+                data.addColumn("number", "Transformers: Age of Extinction");
+
+                data.addRows([
+                    [1, 37.8, 80.8, 41.8],
+                    [2, 30.9, 69.5, 32.4],
+                    [3, 25.4, 57, 25.7],
+                    [4, 11.7, 18.8, 10.5],
+                    [5, 11.9, 17.6, 10.4],
+                    [6, 8.8, 13.6, 7.7],
+                    [7, 7.6, 12.3, 9.6],
+                    [8, 12.3, 29.2, 10.6],
+                    [9, 16.9, 42.9, 14.8],
+                    [10, 12.8, 30.9, 11.6],
+                    [11, 5.3, 7.9, 4.7],
+                    [12, 6.6, 8.4, 5.2],
+                    [13, 4.8, 6.3, 3.6],
+                    [14, 4.2, 6.2, 3.4]
+                ]);
+
+                var options = {
+                    legend: { position: "none" },
+                    width: 800,
+                    height: 300,
+                    axes: {
+                        x: {
+                            0: { side: "top" }
+                        }
+                    }
+                };
+
+                var chart = new google.charts.Line(
+                    document.getElementById("line_top_x")
+                );
+
+                chart.draw(data, google.charts.Line.convertOptions(options));
+            }
+        </script>
     </head>
     <body>
-        <div class="d-flex w-100">
-            <div style="width: 350px;"></div>
-            <div class="container-fluid">
+        <div class="d-flex w-100 mt-5 mb-5">
+            <!-- <div style="width: 350px;"></div> -->
+            <div class="container">
                 <!-- Header Starts -->
                 <div class="row mt-3">
                     <div class="col-12 col-md-9 ">
@@ -342,7 +551,7 @@
                 <!-- Header Ends -->
                 <!-- User info starts -->
                 <div class="row mt-5">
-                    <div class="col-12 col-sm-12 col-md-5 col-lg-5">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 mb-5">
                         <div class="row">
                             <div
                                 class="col-3 col-sm-3 col-md-6 col-lg-6 top-30"
@@ -452,8 +661,70 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+                    <div class="col-12 col-sm-12 col-md-8 col-lg-8">
                         <div class="top-30 w-100 h-100">
+                            <div class="bg-black pb-3">
+                                <div class=" d-flex w-100">
+                                    <div
+                                        class="flex-1 gray border-bottom-white  p-3"
+                                        style="padding-left: .2rem;"
+                                    >
+                                        Conversation Activity
+                                    </div>
+                                    <div
+                                        class="flex-1 gray border-bottom-2  p-3 pl-3"
+                                        style="padding-left: .2rem;"
+                                    >
+                                        Avg. Conv Step per user
+                                    </div>
+                                    <div
+                                        class="flex-1 gray border-bottom-2  pb-3 pl-3 pt-3"
+                                        style="padding-left: .2rem;"
+                                    >
+                                        Avg. Conv per user
+                                    </div>
+                                    <div
+                                        class="flex-1 gray border-bottom-2  p-3"
+                                        style="padding-left: .2rem;"
+                                    >
+                                        Correlation
+                                    </div>
+                                    <div
+                                        class="flex-1 gray border-bottom-2  p-3 d-flex justify-content-end"
+                                        style="padding-left: .2rem;"
+                                    >
+                                        <div class="bg-dark-gray p-3 mr-3">
+                                            <i class="fas fa-filter"></i>
+                                        </div>
+                                        <div class="bg-dark-gray p-3 mr-3">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex m-3">
+                                      <div class="mr-5">
+                                            <div class="color-dark-gray text-center">Monthly</div>
+                                            <div>
+                                                  <span class="text-primary medium-text-2">1.8M</span>
+                                                  <span class="text-primary">+12.3%</span>
+                                            </div>
+                                      </div>
+                                      <div class="mr-5">
+                                            <div class="color-dark-gray text-center">Weekly</div>
+                                            <div>
+                                                  <span class="color-pink medium-text-2">1.8M</span>
+                                                  <span class="text-primary">+12.3%</span>
+                                            </div>
+                                      </div>
+                                      <div>
+                                            <div class="color-dark-gray text-center">Daily</div>
+                                            <div>
+                                                  <span class="color-yellow medium-text-2">1.8M</span>
+                                                  <span class="text-primary">+12.3%</span>
+                                            </div>
+                                      </div>
+                                </div>
+                            </div>
                             <!-- <div class="bg-dark">test</div> -->
                             <div id="chart_div"></div>
                         </div>
@@ -461,198 +732,331 @@
                 </div>
                 <!-- User info ends -->
                 <!-- Queries starts -->
-                <div class="row mt-5">
+                <div class="row mt-100 ">
                     <div class="col-sm-12 col-md-8">
                         <div class="text-gray padding mb-3">
                             Sessions
                         </div>
                         <div class="row">
-                              <div class="col-3">
-                                    <div class="session-box sm-padding">
-                                          <div class="text-gray small-text">
-                                                DAILY SESSIONS
-                                            </div>  
-                                            <div>
-                                                <span class="medium-text-2 bold"
-                                                    >41</span
-                                                >
-                                                <span class="small-text"
-                                                    >-29%</span
-                                                >
-                                            </div>
+                            <div class="col-3">
+                                <div class="session-box sm-padding">
+                                    <div class="text-gray small-text">
+                                        DAILY SESSIONS
                                     </div>
-                              </div>
-                              <div class="col-3">
-                                    <div class="session-box sm-padding">
-                                          <div class="text-gray small-text">
-                                                DAILY SESSION PER USER
-                                            </div>  
-                                            <div>
-                                                <span class="medium-text-2 bold"
-                                                    >1.6</span
-                                                >
-                                                <span class="small-text"
-                                                    >-21%</span
-                                                >
-                                            </div>
+                                    <div>
+                                        <span class="medium-text-2 bold"
+                                            >41</span
+                                        >
+                                        <span class="small-text">-29%</span>
                                     </div>
-                              </div>
-                              <div class="col-3">
-                                    <div class="session-box sm-padding">
-                                          <div class="text-gray small-text">
-                                                DAILY MESSAGE PER SESSION
-                                            </div>  
-                                            <div>
-                                                <span class="medium-text-2 bold"
-                                                    >3.9</span
-                                                >
-                                                <span class="small-text"
-                                                    >-21%</span
-                                                >
-                                            </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="session-box sm-padding">
+                                    <div class="text-gray small-text">
+                                        DAILY SESSION PER USER
                                     </div>
-                              </div>
-                              <div class="col-3">
-                                    <div class="session-box sm-padding">
-                                          <div class="text-gray small-text">
-                                                DAILY CONV. PER SESSION
-                                            </div>  
-                                            <div>
-                                                <span class="medium-text-2 bold"
-                                                    >4.9</span
-                                                >
-                                                <span class="small-text"
-                                                    >-21%</span
-                                                >
-                                            </div>
+                                    <div>
+                                        <span class="medium-text-2 bold"
+                                            >1.6</span
+                                        >
+                                        <span class="small-text">-21%</span>
                                     </div>
-                              </div>
-                              
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="session-box sm-padding">
+                                    <div class="text-gray small-text">
+                                        DAILY MESSAGE PER SESSION
+                                    </div>
+                                    <div>
+                                        <span class="medium-text-2 bold"
+                                            >3.9</span
+                                        >
+                                        <span class="small-text">-21%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="session-box sm-padding">
+                                    <div class="text-gray small-text">
+                                        DAILY CONV. PER SESSION
+                                    </div>
+                                    <div>
+                                        <span class="medium-text-2 bold"
+                                            >4.9</span
+                                        >
+                                        <span class="small-text">-21%</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="text-gray padding mb-3 mt-3">
                             Scenarios
                         </div>
                         <div class="row">
-                              <div class="col-4">
-                                    <div class="session-box p-3 d-flex justify-content-between align-items-center">
-                                         
-                                          <div>
-                                                <div class="text-gray small-text">
-                                                      TOTAL SCENARIOS
-                                                  </div>  
-                                                  <div>
-                                                      <span class="medium-text-2 bold"
-                                                          >2384</span
-                                                      >
-                                                      <span class="small-text"
-                                                          >-29%</span
-                                                      >
-                                                  </div>
-                                          </div>
-                                          <div class="sm-padding">
-                                                <i class="far fa-comment-alt color-green medium-text-2"></i>
-                                          </div>
+                            <div class="col-4">
+                                <div
+                                    class="session-box p-3 d-flex justify-content-between align-items-center"
+                                >
+                                    <div>
+                                        <div class="text-gray small-text">
+                                            TOTAL SCENARIOS
+                                        </div>
+                                        <div>
+                                            <span class="medium-text-2 bold"
+                                                >2384</span
+                                            >
+                                            <span class="small-text">-29%</span>
+                                        </div>
                                     </div>
-                              </div>
-                              <div class="col-4">
-                                    <div class="session-box p-3 d-flex justify-content-between align-items-center">
-                                         
-                                          <div>
-                                                <div class="text-gray small-text">
-                                                      TOTAL SCENARIOS QUESTIONS
-                                                  </div>  
-                                                  <div>
-                                                      <span class="medium-text-2 bold"
-                                                          >8193</span
-                                                      >
-                                                      <span class="small-text"
-                                                          >-29%</span
-                                                      >
-                                                  </div>
-                                          </div>
-                                          <div class="sm-padding">
-                                                <i class="far fa-question-circle color-green medium-text-2"></i>
-                                          </div>
+                                    <div class="sm-padding">
+                                        <i
+                                            class="far fa-comment-alt color-green medium-text-2"
+                                        ></i>
                                     </div>
-                              </div>
-                              <div class="col-4">
-                                    <div class="session-box p-3 d-flex justify-content-between align-items-center">
-                                         
-                                          <div>
-                                                <div class="text-gray small-text">
-                                                     TOTAL ENTITIES
-                                                  </div>  
-                                                  <div>
-                                                      <span class="medium-text-2 bold"
-                                                          >3534</span
-                                                      >
-                                                      <span class="small-text"
-                                                          >-29%</span
-                                                      >
-                                                  </div>
-                                          </div>
-                                          <div class="sm-padding">
-                                                <i class="fas fa-network-wired  color-green medium-text-2"></i>
-                                          </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div
+                                    class="session-box p-3 d-flex justify-content-between align-items-center"
+                                >
+                                    <div>
+                                        <div class="text-gray small-text">
+                                            TOTAL SCENARIOS QUESTIONS
+                                        </div>
+                                        <div>
+                                            <span class="medium-text-2 bold"
+                                                >8193</span
+                                            >
+                                            <span class="small-text">-29%</span>
+                                        </div>
                                     </div>
-                              </div>
-                              
-                             
-                             
-                              
+                                    <div class="sm-padding">
+                                        <i
+                                            class="far fa-question-circle color-green medium-text-2"
+                                        ></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div
+                                    class="session-box p-3 d-flex justify-content-between align-items-center"
+                                >
+                                    <div>
+                                        <div class="text-gray small-text">
+                                            TOTAL ENTITIES
+                                        </div>
+                                        <div>
+                                            <span class="medium-text-2 bold"
+                                                >3534</span
+                                            >
+                                            <span class="small-text">-29%</span>
+                                        </div>
+                                    </div>
+                                    <div class="sm-padding">
+                                        <i
+                                            class="fas fa-network-wired  color-green medium-text-2"
+                                        ></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-4">
-                        <div class="d-flex w-100 justify-content-between align-items-center">
-                              <div class="medium-text-2 text-gray bold mb-3">
-                                    Top Queries
-                              </div>
-                              <div class=" color-green">
-                                    View Details
-                              </div>
+                        <div
+                            class="d-flex w-100 justify-content-between align-items-center"
+                        >
+                            <div class="medium-text-2 text-gray bold mb-3">
+                                Top Queries
+                            </div>
+                            <div class=" color-green">
+                                View Details
+                            </div>
                         </div>
                         <div class="mb-3">
-                              <div class="d-flex w-100 justify-content-between align-items-center">
-                                    <div class="medium-text-3 text-gray bold">
-                                          I am interested in buying f3
-                                    </div>
-                                    <div class="medium-text-3 ">
-                                          88%
-                                    </div>
-                              </div>
-                              <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
+                            <div
+                                class="d-flex w-100 justify-content-between align-items-center"
+                            >
+                                <div class="medium-text-3 text-gray bold">
+                                    I am interested in buying f3
+                                </div>
+                                <div class="medium-text-3 ">
+                                    88%
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div
+                                    class="progress-bar"
+                                    role="progressbar"
+                                    style="width: 75%"
+                                    aria-valuenow="88"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                ></div>
+                            </div>
                         </div>
                         <div class="mb-3">
-                              <div class="d-flex w-100 justify-content-between align-items-center">
-                                    <div class="medium-text-3 text-gray bold">
-                                          Where to buy f7
-                                    </div>
-                                    <div class="medium-text-3 ">
-                                          68%
-                                    </div>
-                              </div>
-                              <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
+                            <div
+                                class="d-flex w-100 justify-content-between align-items-center"
+                            >
+                                <div class="medium-text-3 text-gray bold">
+                                    Where to buy f7
+                                </div>
+                                <div class="medium-text-3 ">
+                                    68%
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div
+                                    class="progress-bar"
+                                    role="progressbar"
+                                    style="width: 68%"
+                                    aria-valuenow="68"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                ></div>
+                            </div>
                         </div>
                         <div class="mb-3">
-                              <div class="d-flex w-100 justify-content-between align-items-center">
-                                    <div class="medium-text-3 text-gray bold">
-                                         My phone is dead
-                                    </div>
-                                    <div class="medium-text-3 ">
-                                          37%
-                                    </div>
-                              </div>
-                              <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 37%" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
+                            <div
+                                class="d-flex w-100 justify-content-between align-items-center"
+                            >
+                                <div class="medium-text-3 text-gray bold">
+                                    My phone is dead
+                                </div>
+                                <div class="medium-text-3 ">
+                                    37%
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div
+                                    class="progress-bar"
+                                    role="progressbar"
+                                    style="width: 37%"
+                                    aria-valuenow="37"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                ></div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- Queries ends -->
+                <!-- Bot performance starts -->
+                <div class="row mt-100">
+                    <div class=" col-sm-6 col-md-6 pr-3">
+                        <div class="medium-text text-gray mb-5">
+                            Overall Bot Performance
+                        </div>
+                        <div
+                            class="d-flex justify-content-between align-items-center"
+                        >
+                            <div>
+                                <div class="medium-text-3 bold">
+                                    TOTAL ANSWERED
+                                </div>
+                                <div
+                                    class="d-flex justify-content-center w-100 align-items-center"
+                                >
+                                    <span class="yellow-dot"></span>
+                                    <span class="large-text">95</span>
+                                    <span>%</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="medium-text-3 bold">
+                                    TOTAL UNANSWERED
+                                </div>
+                                <div
+                                    class="d-flex justify-content-center w-100 align-items-center"
+                                >
+                                    <span class="pink-dot"></span>
+                                    <span class="large-text">05</span>
+                                    <span>%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3">
+                            <div id="chart-container"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <div
+                            class="d-flex justify-content-between align-items-center w-100 mb-5"
+                            style="padding-left: 3rem;"
+                        >
+                            <div class="medium-text text-gray ">
+                                Answered Confidence
+                            </div>
+                            <div class="color-green">
+                                View Details
+                            </div>
+                        </div>
+                        <div class="mt-5" style="padding-left: 3rem;">
+                            <div id="columnchart_material"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bot performance ends -->
+                <!-- Footer graph starts -->
+                <div class="shadow p-3 mb-5 bg-white rounded w-100 mt-100">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="medium-text-2 text-gray bold">
+                                Training Updation
+                            </div>
+                            <div class="mt-100">
+                                <div class="d-flex align-items-center">
+                                    <div class="green-rectangle"></div>
+                                    <span class="medium-text-3">Trained</span>
+                                </div>
+                                <div class="text-gray mt-3 mb-3">VS</div>
+                                <div class="d-flex align-items-center">
+                                    <div class="red-rectangle"></div>
+                                    <span class="medium-text-3">Accuracy</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div
+                                class="d-flex w-100 justify-content-end mb-5 align-items-center"
+                            >
+                                <div class="session-box br-pill p-3 mr-3">
+                                    <span class="color-green mr-3"
+                                        >Date Range</span
+                                    >
+                                    <span class="text-gray mr-3"
+                                        >20-Aug
+                                        <i
+                                            class="far fa-calendar-alt text-gray"
+                                        ></i>
+                                    </span>
+                                    <span class="text-gray "
+                                        >31-Aug
+                                        <i
+                                            class="far fa-calendar-alt text-gray"
+                                        ></i>
+                                    </span>
+                                </div>
+                                <div class="gray-box br-pill p-3 mr-3">
+                                    <span class="text-gray"
+                                        >&nbsp;&nbsp;MTD&nbsp;&nbsp;</span
+                                    >
+                                </div>
+                                <div class="gray-box br-pill p-3 mr-3">
+                                    <span class="text-gray"
+                                        >&nbsp;&nbsp;YTD&nbsp;&nbsp;</span
+                                    >
+                                </div>
+                                <span class="color-green">View Detail</span>
+                            </div>
+                            <div class="w-100 h-100" id="line_top_x"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer graph ends -->
             </div>
         </div>
 
